@@ -53,4 +53,11 @@ class GameController extends Controller
 
         return redirect()->route('admin.games.index')->with('success', 'Game berhasil ditambahkan.');
     }
+
+    public function show(Game $game)
+    {
+        $game->load(['genres', 'gamePlatforms.platform']);
+
+        return view('admin.games.show', compact('game'));
+    }
 }

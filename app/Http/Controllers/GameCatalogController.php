@@ -28,8 +28,6 @@ class GameCatalogController extends Controller
             'customer_name' => ['required', 'string', 'max:255'],
             'whatsapp' => ['required', 'string', 'max:255'],
             'email' => ['nullable', 'email'],
-            'shipping_method' => ['required', 'string', 'max:255'],
-            'notes' => ['nullable', 'string'],
         ]);
 
         $items = $request->input('items');
@@ -44,18 +42,20 @@ class GameCatalogController extends Controller
 
         $totalGames = count($items);
         $totalSize = collect($items)->sum('size_gb');
-        $recommendedPackage = $this->recommendPackage($totalSize);
+        // $recommendedPackage = $this->recommendPackage($totalSize);
+        $package = $this->recommendPackage($totalSize);
 
         $order = Order::create([
             'customer_name' => $data['customer_name'],
             'whatsapp' => $data['whatsapp'],
             'email' => $data['email'],
-            'shipping_method' => $data['shipping_method'],
-            'notes' => $data['notes'],
             'status' => 'Pending',
             'total_games' => $totalGames,
             'total_size_gb' => $totalSize,
-            'recommended_package' => $recommendedPackage,
+            'recommended_package' => $package['name'],
+            'package_price' => $package['price'],
+            
+            // 'recommended_package' => $recommendedPackage,
         ]);
 
         foreach ($items as $item) {
@@ -71,16 +71,38 @@ class GameCatalogController extends Controller
         return redirect()->route('customer.catalog')->with('success', 'Order berhasil dibuat. Admin akan segera menghubungi Anda.');
     }
 
-    public function recommendPackage(float $totalSize): string
+    // public function recommendPackage(float $totalSize): string
+    // {
+    //     if ($totalSize <= 150) {
+    //         return 'Paket Starter';
+    //     }
+
+    //     if ($totalSize <= 250) {
+    //         return 'Paket Booster';
+    //     }
+
+    //     return 'Paket Premium';
+    // }
+
+    public function recommendPackage(float $totalSize): array
     {
-        if ($totalSize <= 100) {
-            return 'Paket Starter';
+        if ($totalSize <= 150) {
+            return [
+                'name' => 'Paket Starter',
+                'price' => 50000,
+            ];
         }
 
         if ($totalSize <= 250) {
-            return 'Paket Booster';
+            return [
+                'name' => 'Paket Booster',
+                'price' => 250000,
+            ];
         }
 
-        return 'Paket Premium';
+        return [
+            'name' => 'Paket Premium',
+            'price' => 500000,
+        ];
     }
 }

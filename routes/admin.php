@@ -9,6 +9,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('platforms', PlatformController::class)->except(['show']);
     Route::resource('genres', GenreController::class)->except(['show']);
-    Route::resource('games', GameController::class)->only(['index', 'create', 'store']);
+    Route::resource('games', GameController::class)->only(['index', 'create', 'store', 'show']);
     Route::resource('orders', OrderController::class)->only(['index', 'show', 'update']);
 });

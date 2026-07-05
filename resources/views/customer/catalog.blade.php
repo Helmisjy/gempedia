@@ -6,6 +6,8 @@
     <title>Gamepedia - Isi Game PC & PS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" onload="window.lucideLoaded=true; if(window.initLucide) window.initLucide();"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.jsscript>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script>
     window.initLucide = function() { if(window.lucide) lucide.createIcons(); };
     document.addEventListener('DOMContentLoaded', function() { if(window.lucideLoaded) window.initLucide(); });
@@ -357,73 +359,155 @@
     </div>
 
     <!-- Main Content -->
+    
     <div class="pt-24 pb-32">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-            <!-- Intro Section -->
-            <div class="mb-8 md:mb-12">
-                <p class="text-sm uppercase tracking-[0.3em] text-cyan-400 mb-2">Koleksi Digital</p>
-                <h2 class="text-4xl md:text-5xl font-bold mb-3">Pilih Game Favorit</h2>
-                <p class="text-slate-400 max-w-2xl">Jelajahi koleksi lengkap game PC dan PlayStation terbaru. Pilih game yang ingin Anda pesan, dan kami akan segera menghubungi Anda.</p>
-            </div>
-
-                <div class="p-5 md:p-8 lg:p-10">
-                    <div class="relative rounded-2xl overflow-hidden shadow min-h-[500px]">
-
-                        <!-- Background Cover Image -->
-                        <img
-                            src="https://4kwallpapers.com/images/walls/thumbs_2t/20209.jpg"
-                            alt="League of Legends"
-                            class="absolute inset-0 w-full h-full object-cover"
-                        >
-
-                        <!-- Overlay -->
-                        <div class="absolute inset-0 bg-black/60"></div>
-
-                        <!-- Content -->
-                        <div class="relative z-10 p-6 md:p-8 lg:p-10 flex flex-col md:flex-row justify-between items-center gap-6 min-h-[500px]">
-
-                            <div class="flex-1 text-center md:text-left">
-                                <div class="flex items-center justify-center md:justify-start gap-2 mb-3">
-                                    <i class="fas fa-crown text-yellow-400 text-2xl"></i>
-                                    <span class="text-yellow-400 text-sm font-bold tracking-wider">
-                                        FEATURED GAME
-                                    </span>
+            <div id="default-carousel" class="relative w-full h-[500px] group overflow-hidden rounded-2xl shadow-2xl shadow-black/30">
+                <!-- Carousel Wrapper -->
+                <div class="relative h-[500px]">
+                    <div class="absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] opacity-0 scale-105 z-0 data-[active=true]:opacity-100 data-[active=true]:scale-100 data-[active=true]:z-10 data-[exit=true]:opacity-0 data-[exit=true]:scale-95" data-carousel-item="0" data-active="true">
+                        <img src="https://images3.alphacoders.com/137/1374941.jpg" alt="League of Legends" class="absolute inset-0 w-full h-full object-cover scale-110 transition-transform duration-[3000ms] group-data-[active=true]:scale-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
+        
+                        <div class="relative z-10 h-full p-6 md:p-10 flex flex-col md:flex-row items-center justify-between">
+                            <div class="flex-1 text-center md:text-left space-y-4 transform transition-all duration-700 delay-200 opacity-0 translate-y-8 data-[active=true]:opacity-100 data-[active=true]:translate-y-0">
+                                <div class="inline-flex items-center justify-center md:justify-start gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                                    <i class="fas fa-crown text-yellow-400 text-sm"></i>
+                                    <span class="text-yellow-400 text-xs font-bold tracking-wider uppercase">Koleksi Digital</span>
                                 </div>
-
-                                <h2 class="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight">
+        
+                                <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
                                     <span class="bg-gradient-to-r from-yellow-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent">
-                                        LEAGUE
+                                        League of
                                     </span>
                                     <br>
-                                    <span class="text-white">OF LEGENDS</span>
+                                    <span class="text-white">Legends</span>
                                 </h2>
-
-                                <p class="text-gray-300 max-w-lg mt-4 text-base md:text-lg">
-                                    Become a legend. Choose a champion, learn his skills, beat opponents in 5v5.
+        
+                                <p class="text-gray-300/90 max-w-lg text-sm md:text-base leading-relaxed">
+                                    Rasakan epik pertempuran di medan perang Summoner's Rift. Pilih champion favoritmu dan menangkan pertarungan!
                                 </p>
-
-                                <button class="mt-6 bg-gradient-to-r from-yellow-400 to-amber-600 text-black font-bold px-8 py-3 rounded-full shadow-lg hover:scale-105 transition">
-                                    PRE-ORDER
+        
+                                <button class="mt-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-bold px-8 py-3.5 rounded-full shadow-lg shadow-yellow-500/30 hover:shadow-yellow-500/50 hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95">
+                                    Order Now
+                                    <i class="fas fa-arrow-right ml-2 text-sm"></i>
                                 </button>
                             </div>
-
-                            <div class="flex-shrink-0">
-                                <div class="w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-yellow-400/50">
-                                    <img
-                                        src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg"
-                                        alt="Ahri"
-                                        class="w-full h-full object-cover"
-                                    >
+        
+                            <div class="flex-shrink-0 mt-6 md:mt-0 transform transition-all duration-700 delay-300 opacity-0 scale-75 rotate-[-10deg] data-[active=true]:opacity-100 data-[active=true]:scale-100 data-[active=true]:rotate-0">
+                                <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-yellow-400/30 shadow-2xl shadow-yellow-500/20 transition-all duration-500 group-hover:border-yellow-400/70 group-hover:shadow-yellow-500/40">
+                                    <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt="Ahri" class="w-full h-full object-cover scale-110 transition-transform duration-700 group-hover:scale-100">
                                 </div>
                             </div>
-
                         </div>
                     </div>
+        
+                    <!-- Item 2 - Cyberpunk 2077 -->
+                    <div class="absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] opacity-0 scale-105 z-0 data-[active=true]:opacity-100 data-[active=true]:scale-100 data-[active=true]:z-10 data-[exit=true]:opacity-0 data-[exit=true]:scale-95" data-carousel-item="1">
+                        <img src="https://4kwallpapers.com/images/wallpapers/gta-6-game-art-5k-3840x2160-14300.jpg" alt="Cyberpunk 2077" class="absolute inset-0 w-full h-full object-cover scale-110 transition-transform duration-[3000ms] group-data-[active=true]:scale-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
+        
+                        <div class="relative z-10 h-full p-6 md:p-10 flex flex-col md:flex-row items-center justify-between">
+                            <div class="flex-1 text-center md:text-left space-y-4 transform transition-all duration-700 delay-200 opacity-0 translate-y-8 data-[active=true]:opacity-100 data-[active=true]:translate-y-0">
+                                <div class="inline-flex items-center justify-center md:justify-start gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                                    <i class="fas fa-crown text-yellow-400 text-sm"></i>
+                                    <span class="text-yellow-400 text-xs font-bold tracking-wider uppercase">Koleksi Digital</span>
+                                </div>
+        
+                                <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
+                                    <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+                                        Cyberpunk
+                                    </span>
+                                    <br>
+                                    <span class="text-white">2077</span>
+                                </h2>
+        
+                                <p class="text-gray-300/90 max-w-lg text-sm md:text-base leading-relaxed">
+                                    Masuki dunia futuristik Night City. Jadilah legenda di kota yang penuh dengan teknologi dan kejahatan.
+                                </p>
+        
+                                <button class="mt-2 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold px-8 py-3.5 rounded-full shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95">
+                                    Order Now
+                                    <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                                </button>
+                            </div>
+        
+                            <div class="flex-shrink-0 mt-6 md:mt-0 transform transition-all duration-700 delay-300 opacity-0 scale-75 rotate-[-10deg] data-[active=true]:opacity-100 data-[active=true]:scale-100 data-[active=true]:rotate-0">
+                                <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-cyan-400/30 shadow-2xl shadow-cyan-500/20 transition-all duration-500 group-hover:border-cyan-400/70 group-hover:shadow-cyan-500/40">
+                                    <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg" alt="Yasuo" class="w-full h-full object-cover scale-110 transition-transform duration-700 group-hover:scale-100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Item 3 - Valorant -->
+                    <div class="absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] opacity-0 scale-105 z-0 data-[active=true]:opacity-100 data-[active=true]:scale-100 data-[active=true]:z-10 data-[exit=true]:opacity-0 data-[exit=true]:scale-95" data-carousel-item="2">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200&q=80" alt="Valorant" class="absolute inset-0 w-full h-full object-cover scale-110 transition-transform duration-[3000ms] group-data-[active=true]:scale-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
+        
+                        <div class="relative z-10 h-full p-6 md:p-10 flex flex-col md:flex-row items-center justify-between">
+                            <div class="flex-1 text-center md:text-left space-y-4 transform transition-all duration-700 delay-200 opacity-0 translate-y-8 data-[active=true]:opacity-100 data-[active=true]:translate-y-0">
+                                <div class="inline-flex items-center justify-center md:justify-start gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                                    <i class="fas fa-crown text-yellow-400 text-sm"></i>
+                                    <span class="text-yellow-400 text-xs font-bold tracking-wider uppercase">Koleksi Digital</span>
+                                </div>
+        
+                                <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
+                                    <span class="bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
+                                        Valorant
+                                    </span>
+                                    <br>
+                                    <span class="text-white">Tactical FPS</span>
+                                </h2>
+        
+                                <p class="text-gray-300/90 max-w-lg text-sm md:text-base leading-relaxed">
+                                    Tunjukkan skill tembakanmu di game FPS taktis terbaik. Pilih agen dengan kemampuan unik dan menangkan pertandingan!
+                                </p>
+        
+                                <button class="mt-2 bg-gradient-to-r from-red-400 to-orange-500 text-black font-bold px-8 py-3.5 rounded-full shadow-lg shadow-red-500/30 hover:shadow-red-500/50 hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95">
+                                    Order Now
+                                    <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                                </button>
+                            </div>
+        
+                            <div class="flex-shrink-0 mt-6 md:mt-0 transform transition-all duration-700 delay-300 opacity-0 scale-75 rotate-[-10deg] data-[active=true]:opacity-100 data-[active=true]:scale-100 data-[active=true]:rotate-0">
+                                <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-red-400/30 shadow-2xl shadow-red-500/20 transition-all duration-500 group-hover:border-red-400/70 group-hover:shadow-red-500/40">
+                                    <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jinx_0.jpg" alt="Jinx" class="w-full h-full object-cover scale-110 transition-transform duration-700 group-hover:scale-100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Slider indicators -->
+                    <div class="absolute z-30 flex -translate-x-1/2 bottom-6 left-1/2 space-x-3 rtl:space-x-reverse">
+                        <button type="button" class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-300 data-[active=true]:w-10 data-[active=true]:bg-yellow-400 data-[active=true]:shadow-lg data-[active=true]:shadow-yellow-500/50" data-slide-to="0" data-active="true" aria-label="Slide 1"></button>
+                        <button type="button" class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-300 data-[active=true]:w-10 data-[active=true]:bg-cyan-400 data-[active=true]:shadow-lg data-[active=true]:shadow-cyan-500/50" data-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-300 data-[active=true]:w-10 data-[active=true]:bg-red-400 data-[active=true]:shadow-lg data-[active=true]:shadow-red-500/50" data-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+        
+                    <!-- Slider controls -->
+                    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group/btn focus:outline-none opacity-0 hover:opacity-100 transition-opacity duration-300" id="prevBtn">
+                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-black/30 backdrop-blur-sm hover:bg-black/50 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110">
+                            <svg class="w-5 h-5 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m15 19-7-7 7-7"/>
+                            </svg>
+                            <span class="sr-only">Previous</span>
+                        </span>
+                    </button>
+                    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group/btn focus:outline-none opacity-0 hover:opacity-100 transition-opacity duration-300" id="nextBtn">
+                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-black/30 backdrop-blur-sm hover:bg-black/50 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110">
+                            <svg class="w-5 h-5 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m9 5 7 7-7 7"/>
+                            </svg>
+                            <span class="sr-only">Next</span>
+                        </span>
+                    </button>
                 </div>
+            </div>
 
 
 
-            <div class="mb-10">
+            <div class="mb-10 mt-12">
                 <div class="flex flex-wrap justify-between items-center mb-6">
                     <div>
                         <h3 class="text-2xl font-bold flex items-center gap-2"><i data-lucide="tag"></i> Available Games</h3>
@@ -479,21 +563,10 @@
                                                 </div>
                                                 <div class="absolute bottom-4 left-4">
                                                     <span class="bg-black/60 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-lg border border-white/20">{{ $game->title }}</span>
+                                                    <span class="bg-black/60 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-lg border border-white/20">{{ $game->genres->pluck('name')->join(', ') ?? 'Action' }}</span>
                                                 </div>
                                                 <div class="absolute inset-0 bg-slate-900/30"></div>
                                             </div>
-    
-                                            <!-- <div class="relative z-10 p-4 flex flex-col justify-end h-full">
-                                                <div class="mb-3">
-                                                    <h5 class="text-sm font-bold text-white mb-1 line-clamp-2">{{ $game->title }}</h5>
-                                                    <p class="text-xs text-slate-300 line-clamp-1">{{ $game->genres->pluck('name')->join(', ') ?? 'Action' }}</p>
-                                                </div>
-    
-                                                <div class="flex items-center justify-between text-xs text-slate-200 pb-3 border-b border-slate-400/30">
-                                                    <span class="inline-block px-2.5 py-1 rounded bg-slate-900/60 text-xs font-medium">{{ $platform?->name }}</span>
-                                                    <span class="font-semibold">{{ $gamePlatform->size_gb }} GB</span>
-                                                </div>
-                                            </div> -->
                                         </div>
                                     </div>
                                 @endforeach
@@ -507,8 +580,6 @@
                     <input type="hidden" id="order-customer_name" name="customer_name" value="">
                     <input type="hidden" id="order-whatsapp" name="whatsapp" value="">
                     <input type="hidden" id="order-email" name="email" value="">
-                    <input type="hidden" id="order-shipping_method" name="shipping_method" value="">
-                    <input type="hidden" id="order-notes" name="notes" value="">
                 </form>
             </div>
         </div>
@@ -857,7 +928,7 @@
             const data = Object.fromEntries(formData);
 
             // Validate
-            if (!data.customer_name || !data.whatsapp || !data.shipping_method) {
+            if (!data.customer_name || !data.whatsapp ) {
                 alert('Harap isi semua field yang wajib');
                 return;
             }
@@ -887,5 +958,108 @@
             });
         });
     </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const items = document.querySelectorAll('[data-carousel-item]');
+    const dots = document.querySelectorAll('[data-slide-to]');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
+    let isTransitioning = false;
+    let autoplayInterval;
+
+    function updateCarousel(newIndex) {
+        if (isTransitioning || newIndex === currentIndex) return;
+        if (newIndex < 0) newIndex = items.length - 1;
+        if (newIndex >= items.length) newIndex = 0;
+
+        isTransitioning = true;
+
+        // Set exit state on current
+        const currentItem = items[currentIndex];
+        currentItem.setAttribute('data-exit', 'true');
+        currentItem.removeAttribute('data-active');
+
+        // Update dots
+        dots[currentIndex].removeAttribute('data-active');
+
+        // After a small delay, activate new item
+        setTimeout(() => {
+            // Remove exit from old
+            currentItem.removeAttribute('data-exit');
+
+            // Activate new
+            const newItem = items[newIndex];
+            newItem.setAttribute('data-active', 'true');
+            
+            // Update dots
+            dots[newIndex].setAttribute('data-active', 'true');
+
+            currentIndex = newIndex;
+
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 100);
+        }, 100);
+    }
+
+    function nextSlide() {
+        updateCarousel(currentIndex + 1);
+        resetAutoplay();
+    }
+
+    function prevSlide() {
+        updateCarousel(currentIndex - 1);
+        resetAutoplay();
+    }
+
+    function startAutoplay() {
+        if (autoplayInterval) clearInterval(autoplayInterval);
+        autoplayInterval = setInterval(nextSlide, 5000);
+    }
+
+    function resetAutoplay() {
+        clearInterval(autoplayInterval);
+        startAutoplay();
+    }
+
+    // Event listeners
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            updateCarousel(index);
+            resetAutoplay();
+        });
+    });
+
+    // Pause on hover
+    const container = document.querySelector('#default-carousel');
+    container.addEventListener('mouseenter', () => {
+        clearInterval(autoplayInterval);
+    });
+    container.addEventListener('mouseleave', startAutoplay);
+
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevSlide();
+        }
+    });
+
+    // Start autoplay
+    startAutoplay();
+
+    // Set initial active state for first dot
+    dots[0].setAttribute('data-active', 'true');
+});
+</script>
+
 </body>
 </html>

@@ -26,6 +26,11 @@ class OrderItem extends Model
 
     public function gamePlatform(): BelongsTo
     {
-        return $this->belongsTo(GamePlatform::class);
+        return $this->belongsTo(GamePlatform::class, 'game_platform_id');
+    }
+
+    public function getGameAttribute()
+    {
+        return $this->gamePlatform?->game;
     }
 }

@@ -30,6 +30,6 @@ class Game extends Model
 
     public function gamePlatforms(): HasMany
     {
-        return $this->hasMany(GamePlatform::class);
+        return $this->hasMany(GamePlatform::class, 'game_id');
     }
 }

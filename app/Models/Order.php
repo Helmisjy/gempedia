@@ -11,12 +11,11 @@ class Order extends Model
         'customer_name',
         'whatsapp',
         'email',
-        'shipping_method',
-        'notes',
         'status',
         'total_games',
         'total_size_gb',
         'recommended_package',
+        'package_price',
     ];
 
     protected $casts = [
@@ -26,5 +25,10 @@ class Order extends Model
     public function items(): HasMany
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function getFormattedPackagePriceAttribute(): string
+    {
+        return 'Rp ' . number_format($this->package_price, 0, ',', '.');
     }
 }
