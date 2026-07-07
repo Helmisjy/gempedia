@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('customer_name');
             $table->string('whatsapp');
             $table->string('email')->nullable();
-            $table->string('shipping_method');
+            $table->string('shipping_method')->nullable();
             $table->text('notes')->nullable();
             $table->string('status')->default('Pending');
             $table->unsignedInteger('total_games')->default(0);

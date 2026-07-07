@@ -14,9 +14,17 @@ class GameController extends Controller
 {
     public function index()
     {
-        $games = Game::with(['genres', 'gamePlatforms.platform'])->latest()->paginate(10);
+        $games = Game::with(['genres', 'gamePlatforms.platform'])->latest()->paginate(50);
+        $totalCollection = Game::count();
 
-        return view('admin.games.index', compact('games'));
+        $totalStorage = GamePlatform::sum('size_gb');
+
+        $largestGame = GamePlatform::with('game')
+            ->orderByDesc('size_gb')
+            ->first();
+
+
+        return view('admin.games.index', compact('games', 'totalCollection', 'totalStorage', 'largestGame'));
     }
 
     public function create()

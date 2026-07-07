@@ -8,6 +8,11 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" onload="window.lucideLoaded=true; if(window.initLucide) window.initLucide();"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.jsscript>"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+    @vite([
+        'resources/css/app.css',
+        'resources/js/app.js'
+    ])
     <script>
     window.initLucide = function() { if(window.lucide) lucide.createIcons(); };
     document.addEventListener('DOMContentLoaded', function() { if(window.lucideLoaded) window.initLucide(); });
@@ -132,6 +137,8 @@
             opacity: 0;
             pointer-events: none;
         }
+
+        
 
         @keyframes floatUp {
             0% {
@@ -335,179 +342,400 @@
 </head>
 <body class="bg-slate-950 text-slate-100">
     <!-- Header Section -->
-    <div class="fixed top-0 left-0 right-0 z-30 border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-md">
-        <div class="mx-auto max-w-8xl px-4 py-4 sm:px-6 lg:px-12">
-            <div class="flex items-center justify-between gap-4">
-                <div class="flex-1">
-                    <h1 class="text-3xl sm:text-4xl font-bold">GAMEPEDIA</h1>
-                    <!-- <p class="text-xs sm:text-sm uppercase tracking-[0.3em] text-cyan-400">Koleksi Game Terlengkap</p> -->
+    <!-- <nav class="fixed w-full top-4 left-1/2 -translate-x-1/2 z-50 rounded-2xl glass-nav border border-white/5 shadow-2xl shadow-purple-900/10 transition-all duration-300">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <div class="flex items-center gap-2">
+                    <a href="#" class="flex items-center gap-2.5 brand-glow">
+                        <svg class="h-8 w-8 md:h-9 md:w-9" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="32" height="32" rx="10" fill="url(#brandGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
+                            <path d="M12 12L24 12L18 22L12 12Z" fill="white" fill-opacity="0.9" />
+                            <path d="M18 22L24 12L26 20L18 22Z" fill="#c084fc" fill-opacity="0.5" />
+                            <defs>
+                                <linearGradient id="brandGrad" x1="0" y1="0" x2="36" y2="36">
+                                    <stop offset="0%" stop-color="#8b5cf6" />
+                                    <stop offset="100%" stop-color="#6d28d9" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span class="text-xl md:text-2xl font-semibold tracking-tight text-white/90 nav-glow">Nebula<span class="text-purple-400">UI</span></span>
+                    </a>
                 </div>
-                <div class="flex items-center gap-4">
-                    <button id="search-toggle" class="p-2 hover:bg-slate-800 rounded-lg transition">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+
+                <div class="flex items-center gap-3 md:gap-4">
+                    <a href="#" class="cta-glow hidden sm:inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-200 focus-ring-custom">
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                            Dashboard
+                        </span>
+                    </a>
+
+
+                    <button id="menuToggle" type="button" class="inline-flex items-center p-2.5 w-10 h-10 justify-center text-sm text-gray-300 rounded-xl hover:bg-white/5 hover:text-white focus:ring-2 focus:ring-purple-500/60 transition-all duration-200 md:hidden focus-ring-custom" aria-controls="mobileMenu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg id="hamburgerIcon" class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
                         </svg>
                     </button>
-                    @auth
-                    <a href="{{ url('/dashboard') }}" class="px-4 py-2 text-sm rounded-lg border border-slate-700 hover:border-cyan-500 transition">Dashboard</a>
-                    @else
-                    <a href="{{ url('/login') }}" class="px-4 py-2 text-sm rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition">Login</a>
-                    @endauth
+                </div>
+
+
+                <div class="hidden md:flex items-center gap-1 lg:gap-2">
+                    <ul class="flex items-center gap-1 lg:gap-2 text-sm font-medium">
+                        <li><a href="#" class="nav-glow px-4 py-2.5 text-white/80 hover:text-white rounded-xl hover:bg-white/5 transition-all duration-200">Home</a></li>
+                        <li><a href="#" class="nav-glow px-4 py-2.5 text-white/70 hover:text-white rounded-xl hover:bg-white/5 transition-all duration-200">Explore</a></li>
+                        <li><a href="#" class="nav-glow px-4 py-2.5 text-white/70 hover:text-white rounded-xl hover:bg-white/5 transition-all duration-200">Pricing</a></li>
+                        <li><a href="#" class="nav-glow px-4 py-2.5 text-white/70 hover:text-white rounded-xl hover:bg-white/5 transition-all duration-200">Community</a></li>
+                    </ul>
+
+                    <a href="#" class="ml-2 hidden lg:inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium text-white/90 bg-purple-600/30 border border-purple-500/20 rounded-xl hover:bg-purple-600/50 transition-all duration-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                        New
+                    </a>
+                </div>
+            </div>
+
+
+            <div id="mobileMenu" class="md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
+                <div class="px-1 pt-2 pb-4 space-y-1 border-t border-white/5 mt-2">
+                    <a href="#" class="mobile-menu-item flex items-center gap-3 px-4 py-3.5 rounded-xl text-white/80 hover:text-white transition-all duration-200 text-base font-medium">
+                        <svg class="w-5 h-5 text-purple-300/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1"/></svg>
+                        Home
+                    </a>
+                    <a href="#" class="mobile-menu-item flex items-center gap-3 px-4 py-3.5 rounded-xl text-white/70 hover:text-white transition-all duration-200 text-base font-medium">
+                        <svg class="w-5 h-5 text-purple-300/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        Explore
+                    </a>
+                    <a href="#" class="mobile-menu-item flex items-center gap-3 px-4 py-3.5 rounded-xl text-white/70 hover:text-white transition-all duration-200 text-base font-medium">
+                        <svg class="w-5 h-5 text-purple-300/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v1m0 10v-1m0 1h-1m1 0h1m-3-1.5a3.5 3.5 0 01.5-6.5 3.5 3.5 0 01.5 6.5"/></svg>
+                        Pricing
+                    </a>
+                    <a href="#" class="mobile-menu-item flex items-center gap-3 px-4 py-3.5 rounded-xl text-white/70 hover:text-white transition-all duration-200 text-base font-medium">
+                        <svg class="w-5 h-5 text-purple-300/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        Community
+                    </a>
+
+                    <div class="pt-3 mt-2 border-t border-white/5">
+                        <a href="#" class="flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl text-white font-medium text-sm shadow-lg shadow-purple-900/40 hover:shadow-purple-700/30 transition-all duration-200">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                            Get started
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </nav> -->
+
+    <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
+    <nav class="fixed top-0 left-0 w-full bg-zinc-950 z-[9999] border-b border-white/5 shadow-2xl shadow-purple-900/10 transition-all duration-300">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button type="button" command="--toggle" commandfor="mobile-menu" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
+                        <span class="absolute -inset-0.5"></span>
+                        <span class="sr-only">Open main menu</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
+                            <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
+                            <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex shrink-0 items-center">
+                        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="h-8 w-auto" />
+                    </div>
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
+                            <a href="#" aria-current="page" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">Dashboard</a>
+                            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">About</a>
+                            <!-- <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Projects</a>
+                            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Calendar</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <button type="button" class="relative rounded-full p-1 text-gray-400 focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
+                        <span class="absolute -inset-1.5"></span>
+                        <span class="sr-only">View notifications</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
+                            <path d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+
+                    <!-- Profile dropdown -->
+                    <el-dropdown class="relative ml-3">
+                        <a href="#" aria-current="page" class="rounded-md bg-cyan-500 px-3 py-2 text-sm font-medium text-white">Login</a>
+                        <!-- <button class="relative flex rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                            <span class="absolute -inset-1.5"></span>
+                            <span class="sr-only">Open user menu</span>
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-8 rounded-full bg-gray-800 outline -outline-offset-1 outline-white/10" />
+                        </button>
+
+                        <el-menu anchor="bottom end" popover class="w-48 origin-top-right rounded-md bg-white py-1 shadow-lg outline outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden">Your profile</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden">Sign out</a>
+                        </el-menu> -->
+                    </el-dropdown>
+                </div>
+            </div>
+        </div>
+
+        <el-disclosure id="mobile-menu" hidden class="block sm:hidden">
+            <div class="space-y-1 px-2 pt-2 pb-3">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
+            <!-- <a href="#" aria-current="page" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">Dashboard</a>
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Team</a>
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Projects</a>
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Calendar</a> -->
+            </div>
+        </el-disclosure>
+    </nav>
+
+    <!-- Section slider -->
+    <section class="" id="hero"class="min-h-[500px] md:min-h-screen relative overflow-hidden bg-[#050A18]">
+        <div class="swiper heroSwiper h-[700px]">
+            <div class="swiper-wrapper">
+
+                {{-- ===================== --}}
+                {{-- Slide 1 --}}
+                {{-- ===================== --}}
+
+                <div class="swiper-slide">
+
+                    <div class="relative h-full w-full">
+
+                        {{-- Background --}}
+                        <img
+                            src="https://4kwallpapers.com/images/walls/thumbs_2t/8565.jpg"
+                            class="absolute inset-0 h-full w-full object-cover">
+
+                        {{-- Overlay --}}
+                        <div
+                            class="absolute inset-0
+                            bg-gradient-to-r
+                            from-[#050A18]
+                            via-[#050A18]/70
+                            to-[#050A18]/10">
+                        </div>
+
+                        {{-- Vignette --}}
+                        <div
+                            class="absolute inset-0
+                            shadow-[inset_0_0_220px_80px_rgba(0,0,0,.85)]">
+                        </div>
+
+                        {{-- Noise --}}
+                        <div class="hero-noise absolute inset-0"></div>
+
+                        {{-- Container --}}
+                        <div
+                            class="hero-content relative z-20
+                            mx-auto
+                            flex
+                            h-full
+                            max-w-7xl
+                            items-center
+                            px-6
+                            lg:px-10">
+
+                            {{-- LEFT --}}
+                            <div class="w-full lg:w-[48%]">
+
+                                <img
+                                    src="https://upload.wikimedia.org/wikipedia/fr/a/a2/WZ2_Logo.png"
+                                    class="hero-logo mb-5 w-[380px] max-w-full">
+
+                                {{-- Badge --}}
+                                <div class="flex flex-wrap items-center gap-3">
+
+                                    <span
+                                        class="rounded-md bg-green-500 px-4 py-2 text-sm font-semibold text-white">
+
+                                        V18319896
+
+                                    </span>
+
+                                    <span
+                                        class="rounded-md bg-white/10 px-4 py-2 text-sm text-white">
+
+                                        PC
+
+                                    </span>
+
+                                    <span class="text-gray-500">
+
+                                        2023
+
+                                    </span>
+
+                                </div>
+
+                                <p
+                                    class="mt-8
+                                    max-w-xl
+                                    text-lg
+                                    leading-9
+                                    text-gray-300">
+
+                                    In a mad and sublime utopian world,
+                                    take part in explosive encounters.
+
+                                </p>
+
+                                <div class="mt-10 flex gap-5">
+
+                                    <a href="#" class="rounded-xl bg-cyan-500  px-8 py-4 font-semibold text-white  transition hover:bg-cyan-400">
+                                        Order Now →
+                                    </a>
+
+                                </div>
+
+                                <!-- Progress -->
+
+                                <div class="mt-10 w-[290px]">
+                                    <div class="h-[3px] rounded-full bg-white/15">
+                                        <div class="hero-progress-fill
+                                                    h-full
+                                                    rounded-full
+                                                    bg-sky-400">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- ===================== --}}
+                {{-- Slide 2 --}}
+                {{-- ===================== --}}
+
+                <div class="swiper-slide">
+
+                    <div class="relative h-full w-full">
+
+                        {{-- Background --}}
+                        <img
+                            src="https://wallpapercave.com/wp/wp12281909.jpg"
+                            class="absolute inset-0 h-full w-full object-cover">
+
+                        {{-- Overlay --}}
+                        <div
+                            class="absolute inset-0
+                            bg-gradient-to-r
+                            from-[#050A18]
+                            via-[#050A18]/70
+                            to-[#050A18]/10">
+                        </div>
+
+                        {{-- Vignette --}}
+                        <div
+                            class="absolute inset-0
+                            shadow-[inset_0_0_220px_80px_rgba(0,0,0,.85)]">
+                        </div>
+
+                        {{-- Noise --}}
+                        <div class="hero-noise absolute inset-0"></div>
+
+                        {{-- Container --}}
+                        <div
+                            class="hero-content relative z-20
+                            mx-auto
+                            flex
+                            h-full
+                            max-w-7xl
+                            items-center
+                            px-6
+                            lg:px-10">
+
+                            {{-- LEFT --}}
+                            <div class="w-full lg:w-[48%]">
+
+                                <img
+                                    src="https://cdn2.steamgriddb.com/logo/dddb352bd1de20bf1eabbc6c7581fc93.png"
+                                    class="hero-logo mb-8 w-[380px] max-w-full">
+
+                                {{-- Badge --}}
+                                <div class="flex flex-wrap items-center gap-3">
+
+                                    <span
+                                        class="rounded-md bg-green-500 px-4 py-2 text-sm font-semibold text-white">
+
+                                        V18319896
+
+                                    </span>
+
+                                    <span
+                                        class="rounded-md bg-white/10 px-4 py-2 text-sm text-white">
+
+                                        PC
+
+                                    </span>
+
+                                    <span class="text-gray-500">
+
+                                        2023
+
+                                    </span>
+
+                                </div>
+
+                                <p
+                                    class="mt-8
+                                    max-w-xl
+                                    text-lg
+                                    leading-9
+                                    text-gray-300">
+
+                                    In a mad and sublime utopian world,
+                                    take part in explosive encounters.
+
+                                </p>
+
+                                <div class="mt-10 flex gap-5">
+
+                                    <a href="#" class="rounded-xl bg-cyan-500  px-8 py-4 font-semibold text-white  transition hover:bg-cyan-400">
+                                        Order Now →
+                                    </a>
+
+                                </div>
+
+                                <!-- Progress -->
+
+                                <div class="mt-10 w-[290px]">
+                                    <div class="h-[3px] rounded-full bg-white/15">
+                                        <div class="hero-progress-fill
+                                                    h-full
+                                                    rounded-full
+                                                    bg-sky-400">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            {{-- Pagination --}}
+            <div class="swiper-pagination"></div>
+
+        </div>
+
+    </section>
 
     <!-- Main Content -->
     
-    <div class="pt-24 pb-32">
+    <div class="pb-32">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-            <div id="default-carousel" class="relative w-full h-[500px] group overflow-hidden rounded-2xl shadow-2xl shadow-black/30">
-                <!-- Carousel Wrapper -->
-                <div class="relative h-[500px]">
-                    <div class="absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] opacity-0 scale-105 z-0 data-[active=true]:opacity-100 data-[active=true]:scale-100 data-[active=true]:z-10 data-[exit=true]:opacity-0 data-[exit=true]:scale-95" data-carousel-item="0" data-active="true">
-                        <img src="https://images3.alphacoders.com/137/1374941.jpg" alt="League of Legends" class="absolute inset-0 w-full h-full object-cover scale-110 transition-transform duration-[3000ms] group-data-[active=true]:scale-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
-        
-                        <div class="relative z-10 h-full p-6 md:p-10 flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center md:text-left space-y-4 transform transition-all duration-700 delay-200 opacity-0 translate-y-8 data-[active=true]:opacity-100 data-[active=true]:translate-y-0">
-                                <div class="inline-flex items-center justify-center md:justify-start gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                                    <i class="fas fa-crown text-yellow-400 text-sm"></i>
-                                    <span class="text-yellow-400 text-xs font-bold tracking-wider uppercase">Koleksi Digital</span>
-                                </div>
-        
-                                <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
-                                    <span class="bg-gradient-to-r from-yellow-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent">
-                                        League of
-                                    </span>
-                                    <br>
-                                    <span class="text-white">Legends</span>
-                                </h2>
-        
-                                <p class="text-gray-300/90 max-w-lg text-sm md:text-base leading-relaxed">
-                                    Rasakan epik pertempuran di medan perang Summoner's Rift. Pilih champion favoritmu dan menangkan pertarungan!
-                                </p>
-        
-                                <button class="mt-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-bold px-8 py-3.5 rounded-full shadow-lg shadow-yellow-500/30 hover:shadow-yellow-500/50 hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95">
-                                    Order Now
-                                    <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                                </button>
-                            </div>
-        
-                            <div class="flex-shrink-0 mt-6 md:mt-0 transform transition-all duration-700 delay-300 opacity-0 scale-75 rotate-[-10deg] data-[active=true]:opacity-100 data-[active=true]:scale-100 data-[active=true]:rotate-0">
-                                <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-yellow-400/30 shadow-2xl shadow-yellow-500/20 transition-all duration-500 group-hover:border-yellow-400/70 group-hover:shadow-yellow-500/40">
-                                    <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt="Ahri" class="w-full h-full object-cover scale-110 transition-transform duration-700 group-hover:scale-100">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- Item 2 - Cyberpunk 2077 -->
-                    <div class="absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] opacity-0 scale-105 z-0 data-[active=true]:opacity-100 data-[active=true]:scale-100 data-[active=true]:z-10 data-[exit=true]:opacity-0 data-[exit=true]:scale-95" data-carousel-item="1">
-                        <img src="https://4kwallpapers.com/images/wallpapers/gta-6-game-art-5k-3840x2160-14300.jpg" alt="Cyberpunk 2077" class="absolute inset-0 w-full h-full object-cover scale-110 transition-transform duration-[3000ms] group-data-[active=true]:scale-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
-        
-                        <div class="relative z-10 h-full p-6 md:p-10 flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center md:text-left space-y-4 transform transition-all duration-700 delay-200 opacity-0 translate-y-8 data-[active=true]:opacity-100 data-[active=true]:translate-y-0">
-                                <div class="inline-flex items-center justify-center md:justify-start gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                                    <i class="fas fa-crown text-yellow-400 text-sm"></i>
-                                    <span class="text-yellow-400 text-xs font-bold tracking-wider uppercase">Koleksi Digital</span>
-                                </div>
-        
-                                <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
-                                    <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
-                                        Cyberpunk
-                                    </span>
-                                    <br>
-                                    <span class="text-white">2077</span>
-                                </h2>
-        
-                                <p class="text-gray-300/90 max-w-lg text-sm md:text-base leading-relaxed">
-                                    Masuki dunia futuristik Night City. Jadilah legenda di kota yang penuh dengan teknologi dan kejahatan.
-                                </p>
-        
-                                <button class="mt-2 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold px-8 py-3.5 rounded-full shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95">
-                                    Order Now
-                                    <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                                </button>
-                            </div>
-        
-                            <div class="flex-shrink-0 mt-6 md:mt-0 transform transition-all duration-700 delay-300 opacity-0 scale-75 rotate-[-10deg] data-[active=true]:opacity-100 data-[active=true]:scale-100 data-[active=true]:rotate-0">
-                                <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-cyan-400/30 shadow-2xl shadow-cyan-500/20 transition-all duration-500 group-hover:border-cyan-400/70 group-hover:shadow-cyan-500/40">
-                                    <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg" alt="Yasuo" class="w-full h-full object-cover scale-110 transition-transform duration-700 group-hover:scale-100">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- Item 3 - Valorant -->
-                    <div class="absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] opacity-0 scale-105 z-0 data-[active=true]:opacity-100 data-[active=true]:scale-100 data-[active=true]:z-10 data-[exit=true]:opacity-0 data-[exit=true]:scale-95" data-carousel-item="2">
-                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200&q=80" alt="Valorant" class="absolute inset-0 w-full h-full object-cover scale-110 transition-transform duration-[3000ms] group-data-[active=true]:scale-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
-        
-                        <div class="relative z-10 h-full p-6 md:p-10 flex flex-col md:flex-row items-center justify-between">
-                            <div class="flex-1 text-center md:text-left space-y-4 transform transition-all duration-700 delay-200 opacity-0 translate-y-8 data-[active=true]:opacity-100 data-[active=true]:translate-y-0">
-                                <div class="inline-flex items-center justify-center md:justify-start gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                                    <i class="fas fa-crown text-yellow-400 text-sm"></i>
-                                    <span class="text-yellow-400 text-xs font-bold tracking-wider uppercase">Koleksi Digital</span>
-                                </div>
-        
-                                <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
-                                    <span class="bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
-                                        Valorant
-                                    </span>
-                                    <br>
-                                    <span class="text-white">Tactical FPS</span>
-                                </h2>
-        
-                                <p class="text-gray-300/90 max-w-lg text-sm md:text-base leading-relaxed">
-                                    Tunjukkan skill tembakanmu di game FPS taktis terbaik. Pilih agen dengan kemampuan unik dan menangkan pertandingan!
-                                </p>
-        
-                                <button class="mt-2 bg-gradient-to-r from-red-400 to-orange-500 text-black font-bold px-8 py-3.5 rounded-full shadow-lg shadow-red-500/30 hover:shadow-red-500/50 hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95">
-                                    Order Now
-                                    <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                                </button>
-                            </div>
-        
-                            <div class="flex-shrink-0 mt-6 md:mt-0 transform transition-all duration-700 delay-300 opacity-0 scale-75 rotate-[-10deg] data-[active=true]:opacity-100 data-[active=true]:scale-100 data-[active=true]:rotate-0">
-                                <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-red-400/30 shadow-2xl shadow-red-500/20 transition-all duration-500 group-hover:border-red-400/70 group-hover:shadow-red-500/40">
-                                    <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jinx_0.jpg" alt="Jinx" class="w-full h-full object-cover scale-110 transition-transform duration-700 group-hover:scale-100">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- Slider indicators -->
-                    <div class="absolute z-30 flex -translate-x-1/2 bottom-6 left-1/2 space-x-3 rtl:space-x-reverse">
-                        <button type="button" class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-300 data-[active=true]:w-10 data-[active=true]:bg-yellow-400 data-[active=true]:shadow-lg data-[active=true]:shadow-yellow-500/50" data-slide-to="0" data-active="true" aria-label="Slide 1"></button>
-                        <button type="button" class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-300 data-[active=true]:w-10 data-[active=true]:bg-cyan-400 data-[active=true]:shadow-lg data-[active=true]:shadow-cyan-500/50" data-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-300 data-[active=true]:w-10 data-[active=true]:bg-red-400 data-[active=true]:shadow-lg data-[active=true]:shadow-red-500/50" data-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-        
-                    <!-- Slider controls -->
-                    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group/btn focus:outline-none opacity-0 hover:opacity-100 transition-opacity duration-300" id="prevBtn">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-black/30 backdrop-blur-sm hover:bg-black/50 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110">
-                            <svg class="w-5 h-5 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m15 19-7-7 7-7"/>
-                            </svg>
-                            <span class="sr-only">Previous</span>
-                        </span>
-                    </button>
-                    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group/btn focus:outline-none opacity-0 hover:opacity-100 transition-opacity duration-300" id="nextBtn">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-black/30 backdrop-blur-sm hover:bg-black/50 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110">
-                            <svg class="w-5 h-5 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m9 5 7 7-7 7"/>
-                            </svg>
-                            <span class="sr-only">Next</span>
-                        </span>
-                    </button>
-                </div>
-            </div>
-
-
-
-            <div class="mb-10 mt-12">
+            <div class="mb-10 mt-3">
                 <div class="flex flex-wrap justify-between items-center mb-6">
                     <div>
                         <h3 class="text-2xl font-bold flex items-center gap-2"><i data-lucide="tag"></i> Available Games</h3>
@@ -516,9 +744,9 @@
                     <a href="#" class="text-sm text-accent-purple hover:text-accent-cyan transition flex items-center gap-1 mt-2 sm:mt-0">View all <i class="fas fa-arrow-right text-xs"></i></a>
                 </div>
                 <!-- Search Bar -->
-                <div id="search-container" class="mb-8 hidden md:block">
+                <!-- <div id="search-container" class="mb-8 hidden md:block">
                     <input type="text" id="search-input" placeholder="Cari game..." class="w-full px-4 py-3 rounded-lg border border-slate-700 bg-slate-900 focus:outline-none focus:border-cyan-500 transition">
-                </div>
+                </div> -->
     
                 <!-- Platform Filters -->
                 <form id="order-form" method="POST" action="{{ route('orders.store') }}">
@@ -603,17 +831,17 @@
             <p class="text-lg font-semibold" id="float-package">-</p>
         </div>
 
-        <button type="button" id="open-order-modal" class="btn-ripple w-full mt-2 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-600 px-4 py-3 font-semibold text-slate-950 hover:shadow-lg hover:shadow-cyan-500/50 transition-all transform hover:scale-105 active:scale-95">
+        <button type="button" id="open-order-modal" class="btn-ripple w-full mt-2 rounded-xl bg-cyan-500 px-4 py-3 font-semibold text-slate-950 hover:shadow-lg hover:shadow-cyan-500/50 transition-all transform hover:scale-105 active:scale-95">
             Lanjut Pesan
         </button>
     </div>
 
-    <div class="lg:hidden fixed left-1/2 bottom-4 z-40 w-[min(94vw,420px)] -translate-x-1/2 rounded-3xl border border-slate-700 bg-slate-900/95 p-4 shadow-2xl backdrop-blur-sm">
+    <div class="lg:hidden fixed bottom-4 left-4 right-4 z-40 rounded-3xl border border-slate-700 bg-slate-900/95 p-4 shadow-2xl backdrop-blur-sm">
         <div class="flex items-center justify-between gap-3">
             <div>
                 <p class="text-[10px] uppercase tracking-[0.3em] text-cyan-400 mb-1">Pilihan</p>
-                <p class="text-lg font-semibold" id="mobile-count">0 game</p>
-                <p class="text-[10px] text-slate-400">Storage: <span id="mobile-total-storage">0 GB</span></p>
+                <p class="text-lg font-semibold" id="mobile-total-storage" >0 GB</p>
+                <p class="text-[10px] text-slate-400">Total Game: <span id="mobile-count">0 Game</span></p>
             </div>
             <button type="button" id="open-order-modal-mobile" class="btn-ripple rounded-2xl bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-400 transition">
                 Pesan
@@ -641,7 +869,7 @@
             <!-- Games List -->
             <div class="grid gap-6 lg:grid-cols-[1.5fr_0.8fr] mb-6">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <h3 class="text-lg text-primary font-semibold mb-4 flex items-center gap-2">
                         <span class="w-2 h-2 bg-cyan-500 rounded-full"></span>
                         Daftar Game Pilihan
                     </h3>
@@ -721,7 +949,7 @@
                 </button>
                 <button 
                     type="submit" 
-                    class="btn-ripple w-full sm:w-auto px-4 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-cyan-600 text-slate-950 font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all transform hover:scale-105 active:scale-95"
+                    class="btn-ripple w-full sm:w-auto px-4 py-3 rounded-2xl bg-cyan-500 text-slate-950 font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all transform hover:scale-105 active:scale-95"
                 >
                     Konfirmasi Order
                 </button>
@@ -1059,6 +1287,57 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set initial active state for first dot
     dots[0].setAttribute('data-active', 'true');
 });
+
+// Toogle Navbar
+        (function() {
+            const toggleBtn = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('hamburgerIcon');
+            let isOpen = false;
+
+            if (toggleBtn && mobileMenu) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    isOpen = !isOpen;
+                    // toggle max-height & opacity
+                    if (isOpen) {
+                        mobileMenu.style.maxHeight = '600px'; // enough to show all items
+                        mobileMenu.style.opacity = '1';
+                        mobileMenu.style.visibility = 'visible';
+                        toggleBtn.setAttribute('aria-expanded', 'true');
+                        // change icon to X
+                        icon.innerHTML = `
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        `;
+                    } else {
+                        mobileMenu.style.maxHeight = '0';
+                        mobileMenu.style.opacity = '0';
+                        mobileMenu.style.visibility = 'hidden';
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                        icon.innerHTML = `
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
+                        `;
+                    }
+                });
+
+                // close on outside click (optional)
+                document.addEventListener('click', function(e) {
+                    const nav = document.querySelector('nav');
+                    if (nav && !nav.contains(e.target) && isOpen) {
+                        isOpen = false;
+                        mobileMenu.style.maxHeight = '0';
+                        mobileMenu.style.opacity = '0';
+                        mobileMenu.style.visibility = 'hidden';
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                        icon.innerHTML = `
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
+                        `;
+                    }
+                });
+            }
+        })();
+
+
 </script>
 
 </body>

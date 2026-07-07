@@ -61,6 +61,673 @@ select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
 }
 
+.hero-noise{
+    background-image:url("/images/noise.png");
+    opacity:.04;
+    mix-blend-mode:overlay;
+}
+
+.swiper{
+    width:100%;
+    height:300px;
+}
+
+.swiper-slide{
+    overflow:hidden;
+    position:relative;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+
+    width:58px;
+    height:58px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    color:white;
+
+    transition:.3s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover{
+
+    background:rgba(255,255,255,.18);
+
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after{
+
+    font-size:18px;
+    font-weight:bold;
+
+}
+
+.swiper-pagination-bullet{
+
+    background:white;
+
+    opacity:.4;
+
+}
+
+.swiper-pagination-bullet-active{
+
+    width:26px;
+
+    border-radius:999px;
+
+    opacity:1;
+
+    background:#33b8ff;
+
+}
+
+@media(max-width:1024px){
+
+    .swiper{
+
+        height:600px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .swiper{
+
+        height:60vh;
+
+    }
+
+}
+
+.swiper-slide-active img:first-child{
+
+    animation:kenburns 8s linear forwards;
+
+}
+
+@keyframes kenburns{
+
+0%{
+
+transform:scale(1);
+
+}
+
+100%{
+
+transform:scale(1.08);
+
+}
+
+}
+
+.hero-character{
+
+opacity:0;
+
+transform:
+
+translateX(120px)
+
+scale(.9);
+
+transition:
+
+1s;
+
+}
+
+.hero-active .hero-character{
+
+opacity:1;
+
+transform:
+
+translateX(0)
+
+scale(1);
+
+}
+
+/* Logo animation */
+.hero-logo{
+
+opacity:0;
+
+transform:
+
+translateY(30px);
+
+transition:
+
+.8s;
+
+}
+
+.hero-active .hero-logo{
+
+opacity:1;
+
+transform:
+
+translateY(0);
+
+}
+
+/* Badge Animation */
+.hero-badge{
+
+opacity:0;
+
+transform:translateY(25px);
+
+transition:.8s;
+
+transition-delay:.15s;
+
+}
+
+.hero-active .hero-badge{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+/* Description Animation */
+.hero-description{
+    opacity:0;
+    transform:translateY(30px);
+    transition:.8s;
+    transition-delay:.35s;
+}
+
+.hero-active .hero-description{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+/* Button animation */
+.hero-buttons{
+
+opacity:0;
+
+transform:translateY(30px);
+
+transition:.8s;
+
+transition-delay:.55s;
+
+}
+
+.hero-active .hero-buttons{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+/* Hover effect animation */
+
+.hero-download{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.hero-download::before{
+
+content:"";
+
+position:absolute;
+
+left:-100%;
+
+top:0;
+
+width:100%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.3),
+
+transparent);
+
+transition:.5s;
+
+}
+
+.hero-download:hover::before{
+
+left:100%;
+
+}
+
+/* Navigation glass */
+.swiper-button-next,
+.swiper-button-prev{
+
+backdrop-filter:blur(18px);
+
+background:
+
+rgba(255,255,255,.08);
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+box-shadow:
+
+0 8px 30px rgba(0,0,0,.25);
+
+}
+
+/* Hero heigh */
+.heroSwiper{
+
+    height:720px;
+
+}
+
+@media(max-width:1280px){
+
+.heroSwiper{
+
+height:650px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.heroSwiper{
+
+height:540px;
+
+}
+
+}
+
+/* Hero BG */
+.heroSwiper{
+
+    height:720px;
+
+}
+
+@media(max-width:1280px){
+
+.heroSwiper{
+
+height:650px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.heroSwiper{
+
+height:540px;
+
+}
+
+}
+
+/* Gradient */
+.hero-overlay{
+
+position:absolute;
+
+inset:0;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+rgba(5,10,24,.98) 0%,
+
+rgba(5,10,24,.82) 28%,
+
+rgba(5,10,24,.40) 55%,
+
+rgba(5,10,24,.05) 100%
+
+);
+
+}
+
+/* Vigenet */
+.hero-vignette{
+
+position:absolute;
+
+inset:0;
+
+box-shadow:
+
+inset 0 0 220px rgba(0,0,0,.95),
+
+inset 0 -120px 180px rgba(0,0,0,.75);
+
+}
+
+/* Noise */
+.hero-noise{
+
+position:absolute;
+
+inset:0;
+
+background:url('/images/noise.png');
+
+opacity:.04;
+
+mix-blend-mode:overlay;
+
+pointer-events:none;
+
+}
+
+/* Hero Logo */
+.hero-logo{
+
+width:390px;
+
+filter:
+
+drop-shadow(
+
+0 20px 40px rgba(0,0,0,.45)
+
+);
+
+}
+
+/* Platform */
+.hero-platform{
+
+background:
+
+rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+}
+
+/* Description */
+.hero-description{
+
+margin-top:35px;
+
+font-size:18px;
+
+line-height:1.9;
+
+color:#D4D8E3;
+
+max-width:560px;
+
+}
+
+/* Download Button */
+.hero-download{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:
+
+18px 34px;
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#25c8ff,
+
+#0098ff
+
+);
+
+border-radius:14px;
+
+font-weight:700;
+
+transition:.35s;
+
+box-shadow:
+
+0 15px 35px rgba(0,170,255,.25);
+
+}
+
+.hero-download:hover{
+
+transform:
+
+translateY(-3px);
+
+box-shadow:
+
+0 25px 45px rgba(0,170,255,.35);
+
+}
+
+/* Details Button */
+.hero-details{
+
+display:flex;
+
+align-items:center;
+
+font-weight:600;
+
+color:white;
+
+opacity:.8;
+
+transition:.3s;
+
+}
+
+.hero-details:hover{
+
+opacity:1;
+
+transform:translateX(5px);
+
+}
+
+/* Character Floating */
+.hero-character{
+
+animation:
+
+floating 6s ease-in-out infinite;
+
+}
+
+@keyframes floating{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/* Navigation */
+.swiper-button-next,
+
+.swiper-button-prev{
+
+width:64px;
+
+height:64px;
+
+background:
+
+rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+border-radius:50%;
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+transition:.35s;
+
+}
+
+.swiper-button-next:hover,
+
+.swiper-button-prev:hover{
+
+transform:scale(1.08);
+
+background:
+
+rgba(255,255,255,.18);
+
+}
+
+/* Pagination */
+.swiper-pagination{
+
+bottom:38px!important;
+
+}
+
+.swiper-pagination-bullet{
+
+width:12px;
+
+height:12px;
+
+background:white;
+
+opacity:.25;
+
+transition:.35s;
+
+}
+
+.swiper-pagination-bullet-active{
+
+width:34px;
+
+border-radius:999px;
+
+background:#28c8ff;
+
+opacity:1;
+
+}
+
+/* Mobile Layout */
+@media(max-width:992px){
+
+.hero-content{
+
+text-align:center;
+
+justify-content:center;
+
+}
+
+.hero-description{
+
+margin:auto;
+
+margin-top:30px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-character{
+
+display:none;
+
+}
+
+.hero-logo{
+
+width:280px;
+
+margin:auto;
+
+}
+
+}
+
+/* Hover Background */
+.swiper-slide-active .hero-bg{
+
+animation:
+
+kenburns 7s linear forwards;
+
+}
 /* \[:where(&)\]:size-4 {
     @apply size-4;
 } */

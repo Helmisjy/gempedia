@@ -30,7 +30,7 @@
             </div>
             <p class="font-medium text-secondary">Total Collection</p>
             </div>
-            <p class="font-bold text-[32px] leading-10 text-foreground">142 Games</p>
+            <p class="font-bold text-[32px] leading-10 text-foreground">{{ $totalCollection }} Games</p>
         </div>
         <!-- Stat 2 -->
         <div class="flex flex-col rounded-2xl border border-border p-6 gap-3 bg-white shadow-sm">
@@ -40,7 +40,7 @@
                 </div>
                 <p class="font-medium text-secondary">Total Storage</p>
             </div>
-            <p class="font-bold text-[32px] leading-10 text-foreground">12 GB</p>
+            <p class="font-bold text-[32px] leading-10 text-foreground">{{ number_format($totalStorage, 0) }} GB</p>
         </div>
         <!-- Stat 3 -->
         <div class="flex flex-col rounded-2xl border border-border p-6 gap-3 bg-white shadow-sm">
@@ -51,21 +51,8 @@
                 <p class="font-medium text-secondary">Largest size</p>
             </div>
             <div class="flex items-center gap-3">
-                <p class="font-bold text-[30px] leading-10 text-foreground">137 GB</p>
-                <p class="text-sm md:text-base">(Black Myth Wukong)</p>  
-            </div>
-        </div>
-        <!-- Stat 4 -->
-        <div class="flex flex-col rounded-2xl border border-border p-6 gap-3 bg-white shadow-sm">
-            <div class="flex items-center gap-[6px]">
-                <div class="size-11 bg-info/10 rounded-xl flex items-center justify-center shrink-0">
-                    <i data-lucide="users" class="size-6 text-info"></i>
-                </div>
-                <p class="font-medium text-secondary">Participants</p>
-            </div>
-            <div class="flex items-center gap-2">
-                <p class="font-bold text-[32px] leading-10 text-foreground">4.2K</p>
-                <span class="text-success text-sm font-semibold bg-success-light px-2 py-0.5 rounded-md">+15%</span>
+                <p class="font-bold text-[30px] leading-10 text-foreground">{{ number_format($largestGame->size_gb,0) }} GBB</p>
+                <p class="text-sm md:text-base">({{ $largestGame->game->title }})</p>  
             </div>
         </div>
     </div>
@@ -127,7 +114,7 @@
                 <!-- Actions -->
                 <div class="p-5 pt-0 mt-auto flex items-center gap-2">
                 <a href="{{ Route('admin.games.show', $game) }}" class="flex-1 cursor-pointer">
-                    <div class="w-full py-2.5 bg-primary/10 text-primary font-semibold rounded-xl hover:bg-primary hover:text-white transition-all text-sm text-center">Edit</div>
+                    <div class="w-full py-2.5 bg-blue-100 text-blue-500 font-semibold rounded-xl hover:bg-primary hover:text-white transition-all text-sm text-center">Edit</div>
                 </a>
                 <a href="{{ Route('admin.games.show', $game) }}" class="size-10 flex items-center justify-center ring-1 ring-border rounded-xl hover:ring-primary text-red-500 transition-all shrink-0 bg-red-100 hover:bg-red-200">
                     <i data-lucide="trash-2" class="size-4"></i>
